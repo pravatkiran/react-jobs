@@ -25,7 +25,7 @@ jobs:
       run: npm run build
 
     - name: Verify Build Directory
-      run: ls -la ./build  # List the contents of the build directory to check if it exists
+      run: ls -la ./dist  # List the contents of the build directory to check if it exists
 
     - name: Add SSH key
       uses: webfactory/ssh-agent@v0.5.4
@@ -38,4 +38,4 @@ jobs:
         SERVER_IP: ${{ secrets.SSH_HOST }}
         SERVER_USERNAME: ${{ secrets.SSH_USER }}
       run: |
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./build/ ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/htnk # Adjust the path on the server as needed
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./dist/ ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/htnk # Adjust the path on the server as needed
