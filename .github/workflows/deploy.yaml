@@ -38,4 +38,4 @@ jobs:
         SERVER_IP: ${{ secrets.SSH_HOST }}
         SERVER_USERNAME: ${{ secrets.SSH_USER }}
       run: |
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./dist/ ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/htnk # Adjust the path on the server as needed
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./dist/ ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/root/test-builds
