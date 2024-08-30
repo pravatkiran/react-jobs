@@ -11,13 +11,11 @@ on:
 jobs:
   #The name of the job, in this case, "CI-CD."
   CI-CD:
-    #Specifies that the job should run on the latest version of the Ubuntu operating system.
     runs-on: ubuntu-latest
     #Lists the individual steps to be executed within the job.
     steps:
-      #Checks out the source code repository into the runner's workspace using the `actions/checkout@v2` GitHub Action.
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v3
       #Sets up Node.js on the runner using the `actions/setup-node@v3` GitHub Action. It specifies that Node.js version 16 should be used.
       - name: Set Up Node.js
         uses: actions/setup-node@v3
