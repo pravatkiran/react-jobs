@@ -24,12 +24,16 @@ jobs:
     - name: Build the React app
       run: npm run build
 
+    - name: Verify Build Directory
+      run: ls -la ./build  # List the contents of the build directory to check if it exists
+
     - name: Add SSH key
       uses: webfactory/ssh-agent@v0.5.4
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATEKEY }}
 
     - name: Deploy to server via SSH
+      if: success()
       env:
         SERVER_IP: ${{ secrets.SSH_HOST }}
         SERVER_USERNAME: ${{ secrets.SSH_USER }}
